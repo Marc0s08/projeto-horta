@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [ws, setWs] = useState(null);
+  const [status, setStatus] = useState("Desconectado");
+  const [mensagens, setMensagens] = useState([]);
+
+  useEffect(() => {
+    const socket = new WebSocket("ws://192.168.0.120/ws");
+
+    socket.onopen = () => setStatus("Conectado ao ESP32 ✅");
+    socket.onclose = () => setStatus("Desconectado ❌");
+    socket.onmessage = (event) => {
+      setMensagens((prev) => [...prev, event.data]);
+    };
+
+    setWs(socket);
+    return () => socket.close();
+  }, []);
+
+  const enviar = (msg) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(msg);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Controle de iluminação via App</h1>
+      <p className="status">{status}</p>
+
+      <div>
+        <button onClick={() => enviar("ligar")}>💡 Ligar LED</button>
+        <button onClick={() => enviar("desligar")}>💤 Desligar LED</button>
+      </div>
+
+      <h3>📜 Logs:</h3>
+      <div className="logs">
+        {mensagens.map((m, i) => (
+          <p key={i}>{m}</p>
+        ))}
+      </div>
     </div>
   );
 }
