@@ -1,104 +1,39 @@
-/* Estilos gerais */
 body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #1e1e2f, #2b2b40);
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* Container principal */
-.container {
+  background: #e8f5e9;
+  background-image: url(/public/fundo.jpg);
+  font-family: sans-serif;
   text-align: center;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 30px 50px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  width: 90%;
-  max-width: 450px;
+  color: #2e7d32;
 }
 
-/* Título */
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #00e0ff;
+.container {
+  padding: 20px;
+}
+.container h1{
+  color: #ffff;
+}
+.container p{
+  color:#ffff;
+}
+.info, .controles {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px auto;
+  width: 320px;
+  box-shadow: 0 0 8px #ccc;
 }
 
-/* Status */
-.status {
-  margin-bottom: 20px;
-  font-weight: 500;
-  color: #ccc;
-}
-
-/* Botões */
 button {
-  background-color: #00bcd4;
+  margin: 5px;
+  padding: 10px 15px;
   border: none;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1rem;
   border-radius: 8px;
-  margin: 10px;
+  background: #66bb6a;
+  color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #0097a7;
-  transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-/* Logs */
-.logs {
-  text-align: left;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 10px;
-  height: 180px;
-  overflow-y: auto;
-  margin-top: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logs p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-  color: #b0e0e6;
-  word-break: break-word;
-}
-
-/* Scrollbar personalizada */
-.logs::-webkit-scrollbar {
-  width: 8px;
-}
-
-.logs::-webkit-scrollbar-thumb {
-  background: #00bcd4;
-  border-radius: 8px;
-}
-
-/* Responsividade */
-@media (max-width: 480px) {
-  .container {
-    padding: 20px;
-  }
-
-  button {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  h1 {
-    font-size: 1.4rem;
-  }
+  background: #388e3c;
 }
